@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from .Rol import Rol
 
 class Profile(models.Model):
 
@@ -17,7 +17,7 @@ class Profile(models.Model):
     phone = models.CharField(max_length=15, null=True, blank=True)
     address = models.CharField(max_length=250, null=True, blank=True)
     gender = models.PositiveSmallIntegerField(choices=GENDERS, null=True, blank=True)
-
+    rol = models.ForeignKey(Rol, on_delete=models.CASCADE, null=True, blank=True)
     activo = models.BooleanField(default=True)
     creado = models.DateTimeField(auto_now_add=True)
     modificado = models.DateTimeField(auto_now=True)

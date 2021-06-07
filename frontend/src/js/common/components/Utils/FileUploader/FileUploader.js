@@ -29,7 +29,7 @@ class FileUploader extends Component {
     }
 
     componentWillMount(){
-        if (this.props.img !== null && this.props.img !== undefined){
+        if (this.props.img !== null && this.props.img !== undefined){ 
             // setea la imágen si se le envia una
             this.setState({
                 imageSrc: this.props.img,
@@ -40,10 +40,13 @@ class FileUploader extends Component {
     }
     componentWillReceiveProps(nextProps){
         if (nextProps.img !== null && nextProps.img !== undefined){
+            const fileName = nextProps.img
+            let extension = fileName.split('.').pop();
             // setea la imágen si se le envia una
             this.setState({
                 imageSrc: nextProps.img,
-                loaded: true
+                loaded: true,
+                isImage: extension == 'jpg' || extension == 'png' || extension == 'gif' ? true : false
             });
         }
     }
